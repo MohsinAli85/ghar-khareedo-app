@@ -43,7 +43,12 @@ app.get("/api/CustomerFeedback", (req, res) => {
       const db = client.db(DB_NAME);
       const collection = db.collection(COLLECTIONS_NAMES.customerFeedbackForm);
 
-      const result = await collection.find().toArray();
+      // const result = await collection.find().toArray();
+      const result = await collection
+        .find()
+        .sort({ _id: 1 })
+        .limit(4)
+        .toArray();
       console.log(
         `${result.insertedCount} documents were inserted with the _id: ${result.insertedId}`
       );
