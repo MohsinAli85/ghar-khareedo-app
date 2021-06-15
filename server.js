@@ -46,7 +46,7 @@ app.get("/api/CustomerFeedback", (req, res) => {
       // const result = await collection.find().toArray();
       const result = await collection
         .find()
-        .sort({ _id: 1 })
+        .sort({ _id: -1 })
         .limit(4)
         .toArray();
       console.log(
